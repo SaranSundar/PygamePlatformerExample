@@ -22,8 +22,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = y
 
         # Set speed vector of player
-        self.delta_x = 2
-        self.delta_y = 2
+        self.delta_x = 5
+        self.delta_y = 5
         self.room = None
 
     def key_down(self, key):

@@ -77,6 +77,8 @@ class Room:
         """ Constructor, create our lists. """
         self.background_blocks, self.collision_blocks = create_blocks(filename)
         self.background_color = constants.WHITE
+        # How far this world has been scrolled left/right
+        self.world_shift = 0
 
     def update(self):
         self.background_blocks.update()
@@ -86,3 +88,17 @@ class Room:
         screen.fill(self.background_color)
         self.background_blocks.draw(screen)
         self.collision_blocks.draw(screen)
+
+    def shift_world(self, shift_x):
+        """ When the user moves left/right and we need to scroll
+        everything: """
+
+        # Keep track of the shift amount
+        self.world_shift += shift_x
+
+        # Go through all the sprite lists and shift
+        for platform in self.background_blocks:
+            platform.rect.x += shift_x
+
+        for platform in self.collision_blocks:
+            platform.rect.x += shift_x
