@@ -17,7 +17,7 @@ YELLOW = (255, 235, 59)
 
 # Screen dimensions
 SCREEN_WIDTH = 880
-SCREEN_HEIGHT = 600
+SCREEN_HEIGHT = 715
 
 # X, Y = Col, Row
 GRASS_BLOCK = (9, 0)
