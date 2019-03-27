@@ -16,7 +16,7 @@ CYAN = (0, 188, 212)
 YELLOW = (255, 235, 59)
 
 # Screen dimensions
-SCREEN_WIDTH = 800
+SCREEN_WIDTH = 880
 SCREEN_HEIGHT = 600
 
 # X, Y = Col, Row
