@@ -63,13 +63,6 @@ def get_block_sprite(block, block_size, scale_size, spritesheet):
 
 
 class Room:
-    """ Base class for all rooms. """
-
-    # Each room has a list of walls, and of enemy sprites.
-    # wall_list = None
-    # coins = None
-    screen_width: int = 0
-    screen_height: int = 0
     background_blocks = None
     collision_blocks = None
 
