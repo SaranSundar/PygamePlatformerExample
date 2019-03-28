@@ -1,3 +1,5 @@
+import math
+
 import pygame
 
 import constants
@@ -57,8 +59,20 @@ class Player(pygame.sprite.Sprite):
         self.room = room
 
     def apply_damage(self, dmg=100, base_knock_back=5, angle=45):
-        # It should return speed in x and y, and time
-        pass
+        # Knock-back calculations applied after applying the damage taken
+        self.damage_taken += dmg
+
+        # Calculate knock-back
+        knock_back = self.damage_taken / 10 + (self.damage_taken * dmg) / 200
+        knock_back *= 280 / (self.weight + 100)
+        knock_back += 18 + base_knock_back
+
+        # Calculate velocity and time (milliseconds)
+        x_velocity = knock_back * math.cos(angle)
+        y_velocity = knock_back * math.sin(angle)
+        lockout_time = y_velocity / self.gravity * 16.667
+
+        return x_velocity, y_velocity, lockout_time
 
     # Use booleans for movement and update based on booleans in update method
     def update(self):
