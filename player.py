@@ -8,7 +8,6 @@ class Player(pygame.sprite.Sprite):
     left = False
     up = False
     down = False
-    speed = 5
     scale = 1.75
 
     def __init__(self, x, y, w, h):
@@ -26,6 +25,11 @@ class Player(pygame.sprite.Sprite):
         self.delta_y = 5
         self.room = None
 
+        # Variables for knock back
+        self.weight = 100  # kg
+        self.damage_taken = 0.0
+        self.gravity = .35
+
     def key_down(self, key):
         if key == pygame.K_LEFT:
             self.left = True
@@ -36,6 +40,8 @@ class Player(pygame.sprite.Sprite):
             self.jump()
         elif key == pygame.K_DOWN:
             self.down = True
+        elif key == pygame.K_SPACE:
+            self.apply_damage()
 
     def key_up(self, key):
         if key == pygame.K_LEFT:
@@ -49,6 +55,10 @@ class Player(pygame.sprite.Sprite):
 
     def set_room(self, room):
         self.room = room
+
+    def apply_damage(self, dmg=100, base_knock_back=5, angle=45):
+        # It should return speed in x and y, and time
+        pass
 
     # Use booleans for movement and update based on booleans in update method
     def update(self):
@@ -95,7 +105,7 @@ class Player(pygame.sprite.Sprite):
         if self.delta_y == 0:
             self.delta_y = 1
         else:
-            self.delta_y += .35
+            self.delta_y += self.gravity
 
         # See if we are on the ground.
         if self.rect.y >= constants.SCREEN_HEIGHT - self.rect.height and self.delta_y >= 0:
