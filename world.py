@@ -47,13 +47,6 @@ class World:
         self.sprites.draw(screen)
 
     def shift_world(self):
-        # current_position_right = self.player.rect.right + self.rooms[self.current_room].world_shift
-        # current_position_left = self.player.rect.left + self.rooms[self.current_room].world_shift
-        # print(self.rooms[self.current_room].world_shift, current_position_right)
-        # # If the player gets near the right side, shift the world left (-x)
-        # if current_position_right >= constants.SCREEN_WIDTH - self.boundary_size:
-        #     pass
-        # el
         if self.player.rect.right >= self.right_boundary:
             diff = self.calculate_right_diff()
             self.player.rect.right = self.right_boundary

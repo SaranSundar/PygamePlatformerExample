@@ -10,7 +10,7 @@ def create_blocks(filename: str):
     collision_blocks = pygame.sprite.Group()
     spritesheet = SpriteSheet("tiles_spritesheet.png")
     scale_block_size = 55
-    spritesheet_block_size = 72  # 72 x 72
+    spritesheet_block_size = 70  # 70 x 70
     file_path = get_path_name("maps", filename)
     with open(file_path, 'r') as f:
         lines = f.readlines()
@@ -27,22 +27,28 @@ def create_blocks(filename: str):
                 if char == ".":
                     color = constants.BLACK
                     can_collide = False
-                elif char == "r":
+                elif char == "a":
                     color = constants.RED
-                    image = get_block_sprite(constants.GRASS_BLOCK, spritesheet_block_size, scale_block_size,
-                                             spritesheet)
+                    image = constants.ALARM_BLOCK
+                    can_collide = False
                 elif char == "g":
                     color = constants.GREEN
-                    image = get_block_sprite(constants.PURPLE_BLOCK, spritesheet_block_size, scale_block_size,
-                                             spritesheet)
+                    image = constants.GRASS_BLOCK
+                elif char == "1":
+                    color = constants.GREEN
+                    image = constants.RGRASS_BLOCK
+                elif char == "2":
+                    color = constants.GREEN
+                    image = constants.LGRASS_BLOCK
                 elif char == "b":
                     color = constants.BLUE
-                    can_collide = False
-                    image = get_block_sprite(constants.TORCH_BLOCK, spritesheet_block_size, scale_block_size,
-                                             spritesheet)
-                elif char == "p":
-                    color = constants.PURPLE
-                    image = get_block_sprite(constants.ALARM_BLOCK, spritesheet_block_size, scale_block_size,
+                    image = constants.BKEY_BLOCK
+                elif char == "e":
+                    color = constants.YELLOW
+                    image = constants.EXIT_BLOCK
+
+                if image is not None:
+                    image = get_block_sprite(image, spritesheet_block_size, scale_block_size,
                                              spritesheet)
                 block = Block(x, y, scale_block_size, scale_block_size, color, image, can_collide)
                 if can_collide:
