@@ -20,13 +20,3 @@ SCREEN_WIDTH = 880
 SCREEN_HEIGHT = 715
 
 # X, Y = Col, Row
-GRASS_BLOCK = (7, 8)  # g
-ALARM_BLOCK = (0, 2)  # a
-TORCH_BLOCK = (1, 2)  # t
-ITEM_BLOCK = (0, 0)  # i
-CRATE_BLOCK = (0, 11)  # c
-WARNING_BLOCK = (0, 5)  # w
-EXIT_BLOCK = (4, 5)  # e
-BKEY_BLOCK = (6, 7)  # b
-RGRASS_BLOCK = (8, 8)  # 1
-LGRASS_BLOCK = (8, 10)  # 2
